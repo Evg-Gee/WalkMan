@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b54229956bec1140ae9c776cef6c333, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  speed: 14
+  jumpForce: 20
+  maxHealth: 100
+  meleeDamage: 10
+  meleeCooldown: 0.5
+  rangedDamage: 5
+  rangedCooldown: 0.3
+  bulletAmount: 20
+  meleeStunDamage: 4
+  meleeStunDelay: 1
+  groundCheckRadius: 0.1
+  groundUpCheckRadius: 0.42
+  meleeCheckRadius: 2.64
+  _rotationSpeed: 0.85
+  _accelerationSpeed: 8
+  _decelerationSpeed: 30
+  _turnAngleThreshold: 10
+  wispPrefab: {fileID: 3356291870768024730, guid: de282cc29e88944469167f937163ba81, type: 3}
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  BonusLayer:
+    serializedVersion: 2
+    m_Bits: 512

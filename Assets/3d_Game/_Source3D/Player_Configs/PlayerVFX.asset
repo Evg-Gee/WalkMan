@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3981ab89f49d44fbfd572d98c16925, type: 3}
+  m_Name: PlayerVFX
+  m_EditorClassIdentifier: 
+  _DamagePostProcessingFX: {fileID: 203486743655608401, guid: f59631634839c94439f35f98674b7e3d, type: 3}
+  _meleeDamageFX: {fileID: 2864103594800565587, guid: dea2241c0dbb9134aa1f555d8cadaff8, type: 3}
+  _runingFX: {fileID: 1843570531177565109, guid: 5be01cdc60f42414a8ab97c2d872ea52, type: 3}
+  _jumpingEndFX: {fileID: 1828176872806910, guid: 5ae197809f17fbe47a8f4489b187501c, type: 3}
+  _stunGunIdleSprite: {fileID: 1388930799636894152, guid: 313b5fc68ec80ba4693a98f6df4041a3, type: 3}
+  _shootingGunFX: {fileID: 0}
+  _stunGunIdleFX: {fileID: 0}

@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - FloatingJoysticks
+  - Target_R_For_Enemy_Points
+  - Target_L_For_Enemy_Points
+  - Target For Attack L
+  - Target For Attack R
+  - JoystickLookInput
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Enemy
+  - Death
+  - Finish
+  - Bonus
+  - Player
+  - PlayerBullet
+  - FX
+  - DamageFlash
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 1624608395
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 1434876987
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 1552448059
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2435177587
+    locked: 0
+  - name: Level_Dsgn
+    uniqueID: 3498149919
+    locked: 0
+  - name: SpawnZone
+    uniqueID: 1311584063
+    locked: 0
+  - name: Spawn_Container
+    uniqueID: 3035585389
+    locked: 0
+  - name: SpawnZone_FX
+    uniqueID: 3230959419
+    locked: 0
+  - name: Enemy_Green
+    uniqueID: 1044500075
+    locked: 0
+  - name: FX_Enemy_Green_Layer
+    uniqueID: 1469534751
+    locked: 0
+  - name: Enemy_Blood
+    uniqueID: 1348623871
+    locked: 0
+  - name: FX_Enemy_Blood_Layer
+    uniqueID: 1611997583
+    locked: 0
+  - name: Enemy_Girl
+    uniqueID: 2529641013
+    locked: 0
+  - name: FX_Girl_Layer
+    uniqueID: 2070388807
+    locked: 0
+  - name: Player_Chr
+    uniqueID: 4011695505
+    locked: 0
+  - name: FX_Layer
+    uniqueID: 4043265875
+    locked: 0
+  - name: UI_Canvas
+    uniqueID: 2792516519
+    locked: 0
+  - name: New Layer 10
+    uniqueID: 3431637209
+    locked: 0
+  - name: UI Menu 0
+    uniqueID: 1796816315
+    locked: 0
+  - name: UI Menu 1
+    uniqueID: 2429612417
+    locked: 0
+  - name: UI Menu 2
+    uniqueID: 1223617457
+    locked: 0
+  - name: UI Menu 3
+    uniqueID: 1963693789
+    locked: 0
+  - name: UI Menu 4
+    uniqueID: 281834035
+    locked: 0
+  - name: UI_Shop_BG
+    uniqueID: 912566321
+    locked: 0
+  - name: UI_Shop_FX
+    uniqueID: 2407976409
+    locked: 0
+  - name: UI_Shop_InfopPanel
+    uniqueID: 1362330719
+    locked: 0
+  - name: UI Menu InfoTOP
+    uniqueID: 2358307971
+    locked: 0

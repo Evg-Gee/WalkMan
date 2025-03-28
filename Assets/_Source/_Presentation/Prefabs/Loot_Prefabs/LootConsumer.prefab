@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8256449173108543140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1758778621176080654}
+  - component: {fileID: 4460360256290807283}
+  m_Layer: 0
+  m_Name: LootConsumer
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1758778621176080654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256449173108543140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.344913, y: 2.6669378, z: -0.07797526}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4460360256290807283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256449173108543140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0011a675e61924ebb859c6a62d3fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinsPoolAmount: 150
+  _coinsPoolPrefabab: {fileID: 6425572555230339746, guid: 1a3a96be56b08f14d8262dc43eb84d7e, type: 3}
+  _coinsGreenPoolPrefabab: {fileID: 6425572555230339746, guid: 4f31840386652d6409dcbd4bd1f2482e, type: 3}
+  _coinsPrefab: {fileID: 2845417715895568361, guid: 1a3a96be56b08f14d8262dc43eb84d7e, type: 3}
+  _bodyCorpse: {fileID: 0}
+  _uiHeart: {fileID: 0}
+  jumpPower: 10
+  numPower: 1
+  durationJump: 1
