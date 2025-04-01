@@ -3,8 +3,7 @@ using UnityEngine;
 public class PickUpItemState : BaseState
 {
     private readonly IAnimationController _animationController;
-    private readonly IInteractable _item;
-   private bool _animationCompleted;
+    private  IInteractable _item;
 
     public PickUpItemState(ICharacter character, 
         StateMachine stateMachine, 
@@ -18,35 +17,27 @@ public class PickUpItemState : BaseState
 
     public override void Enter()
     {   
-        _animationCompleted = false;
-        _animationController.OnAnimationComplete += HandleAnimationComplete;
-        _animationController.SetState(AnimationState.Pickup);
-        Debug.Log("Update PickUpItemState");
+        _animationController.SetState(AnimationState.TakeItem);
     }
 
     public override void Exit() 
     {
-        _animationController.OnAnimationComplete -= HandleAnimationComplete;
         _animationController.SetState(AnimationState.Idle);
     } 
-
+    
     public override void Update()
     {     
-        if (_animationCompleted)
-        {
-            _item.Interact(Character);
-            TryChangeState<IdleState>();
-        }
-    }
-    private void HandleAnimationComplete(AnimationState completedState)
+        if (_item != null)
     {
-        if (completedState == AnimationState.Pickup)
-        {
-            _animationCompleted = true;
-        }
-        else
-        {
-            _animationCompleted =false;
-        }
+        _item.Interact(Character);
+        _item = null;
     }
+
+    if (!_animationController.IsAnimationPlaying(AnimationState.TakeItem))
+    {
+        TryChangeState<IdleState>(); 
+    }
+        
+    }    
+    
 }

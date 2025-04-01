@@ -16,7 +16,7 @@ public class RotationHandler : IRotationHandler
     }
 
     public void CalculateTurnParameters(Vector2 moveInput, Transform characterTransform)
-    {
+    {         
         if (moveInput == Vector2.zero)
         {
             IsTurning = false;
@@ -35,7 +35,7 @@ public class RotationHandler : IRotationHandler
     public bool IsTurningBackward() => _turnAngle < -160f;
 
     public Quaternion GetTargetRotation(Vector3 rotationInput, Transform characterTransform)
-    {
+    {    
         Vector3 worldDirection = characterTransform.TransformDirection(rotationInput);
         return Quaternion.LookRotation(worldDirection);
     }

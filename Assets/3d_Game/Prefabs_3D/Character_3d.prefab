@@ -57,6 +57,7 @@ MonoBehaviour:
   _groundCheckDistance: 0.2
   _movementJoystick: {fileID: 0}
   _lookJoystick: {fileID: 0}
+  _handButton: {fileID: 0}
 --- !u!95 &1148196426827763494
 Animator:
   serializedVersion: 5

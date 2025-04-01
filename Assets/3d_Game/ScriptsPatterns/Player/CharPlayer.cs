@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class CharPlayer : MonoBehaviour, ICharacter
@@ -8,7 +9,7 @@ public class CharPlayer : MonoBehaviour, ICharacter
     [SerializeField] private float _groundCheckDistance = 0.2f;
     [SerializeField] private FloatingJoysticks _movementJoystick;
     [SerializeField] private FloatingJoysticks _lookJoystick;
-    [SerializeField] private GameObject _handButton;
+    [SerializeField] private Button _handButton;
     
     private IJoystick _moveInput;
     private IJoystick _lookInput;
@@ -23,7 +24,7 @@ public class CharPlayer : MonoBehaviour, ICharacter
     public Animator Animator { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
     public PlayerStatsSO Stats => _stats;
-    public GameObject HandButton => _handButton;
+    public Button HandButton => _handButton;
     public IInputHandler InputHandler => _input;
     public Transform CharacterTransform => transform;
     public Quaternion Rotation { get => transform.rotation; set => transform.rotation = value; }
@@ -59,7 +60,7 @@ public class CharPlayer : MonoBehaviour, ICharacter
         _stateMachine.AddState(new JumpingState(this, _stateMachine, _animController));
         _stateMachine.AddState(new AttackState(this, _stateMachine));
         _stateMachine.AddState(new TakeDamageState(this, _stateMachine, _animController));             
-        _stateMachine.AddState(new PickUpItemState(this, _stateMachine, null, _animController));
+       // _stateMachine.AddState(new PickUpItemState(this, _stateMachine, null, _animController));
         
         _stateMachine.ChangeState<IdleState>();
     }
@@ -69,11 +70,12 @@ public class CharPlayer : MonoBehaviour, ICharacter
         UpdateGroundStatus();
         _stateMachine.Update();
         
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     _pickUpHandler?.PickUpItem();
-        // }
          
+         if (_input.PickUpPressed && _pickUpHandler.CurrentItem != null)
+        {
+            _pickUpHandler?.PickUpItem();
+        }
+        
         _input.ResetActions();      
     }
 
@@ -87,7 +89,5 @@ public class CharPlayer : MonoBehaviour, ICharacter
             _groundCheckDistance, 
             _groundLayer
         );
-    }
-    
-    
-    }
+    }    
+}

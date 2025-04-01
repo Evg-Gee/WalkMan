@@ -7,6 +7,6 @@ public class HealthPotion : MonoBehaviour, IInteractable
     public void Interact(ICharacter character)
     {
         Debug.Log("charactermaxHealth + " + character.Stats.maxHealth);
-        Destroy(gameObject.gameObject);
+        Destroy(gameObject,0.75f);
     }
 }

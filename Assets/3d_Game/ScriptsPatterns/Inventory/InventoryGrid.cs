@@ -25,7 +25,7 @@ namespace Inventory
         public string OwnerId => _data.ownerId;
 
         private readonly InventoryGridData _data;
-        private readonly Dictionary<Vector2Int, InventorySlot> _slotsMap = new ();                // Координата яцейки и сама ячейка
+        private readonly Dictionary<Vector2Int, InventorySlot> _slotsMap = new ();        
 
         public InventoryGrid(InventoryGridData data)
         {
@@ -35,7 +35,7 @@ namespace Inventory
             {
                 for (var j = 0; j < size.y; j++)
                 {
-                    var index = i*size.y + j;                                               // перевод двумерного массива в однамерный
+                    var index = i*size.y + j;                                               
                     var slotData = data.inventorySlots[index];
                     var slot = new InventorySlot(slotData);
                     var position = new Vector2Int(i, j);
@@ -45,7 +45,7 @@ namespace Inventory
             }
         }
 
-        public AddItemsToInventoryGridResult AddItems(string itemId, int amount = 1)                                       //Добавление предмета в инвентарь
+        public AddItemsToInventoryGridResult AddItems(string itemId, int amount = 1)                                       
         {
             var remainingAmount = amount;
             var itemsAddedToSlotWithSameItemsAmount = AddToSlotsWithSameItems(itemId, remainingAmount, out remainingAmount);

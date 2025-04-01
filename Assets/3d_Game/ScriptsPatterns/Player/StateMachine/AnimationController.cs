@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 
-public enum AnimationState { Idle, Running, Jumping, RightTurn, LeftTurn, TakeDamage, Pickup}
+public enum AnimationState { Idle, Running, Jumping, RightTurn, LeftTurn, TakeDamage, TakeItem}
 public class AnimationController : IAnimationController
 {
     private readonly Animator _animator;
-    public event Action <AnimationState> OnAnimationComplete;
 
     private static readonly int IsRunning = Animator.StringToHash("IsRunning");
     private static readonly int IsJumping = Animator.StringToHash("IsJumping");
@@ -13,11 +12,17 @@ public class AnimationController : IAnimationController
     private static readonly int IsRunningLeftTurn = Animator.StringToHash("IsRunningLeftTurn");
 
     private static readonly int IsTakeDamage = Animator.StringToHash("TakeDamage");
-    private static readonly int IsPickup = Animator.StringToHash("Pickup");
+    private static readonly int IsTakeItem = Animator.StringToHash("IsTakeItem");
 
     public AnimationController(Animator animator)
     {
         _animator = animator;
+    }
+    
+    public bool IsAnimationPlaying(AnimationState state)
+    {
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.IsName(state.ToString()) && stateInfo.normalizedTime < 1.0f;
     }
 
     public void SetState(AnimationState state)
@@ -41,18 +46,14 @@ public class AnimationController : IAnimationController
             case AnimationState.TakeDamage:
             _animator.SetBool(IsTakeDamage, true);
                 break;
-            case AnimationState.Pickup:
-            _animator.SetBool(IsPickup, true);
+            case AnimationState.TakeItem:
+            _animator.SetBool(IsTakeItem, true);
                 break;    
             case AnimationState.Idle:
             default:
              // Всё уже сброшено ResetAllStates(), ничего делать не надо
             break;
         }
-    }
-    public void OnAnimationEnd(AnimationState state)
-    {
-        OnAnimationComplete?.Invoke(state);
     }
 
     public void SetTurn(IRotationHandler rotationHandler, Vector2 moveInput)
@@ -94,7 +95,7 @@ public class AnimationController : IAnimationController
         _animator.SetBool(IsJumping, false);
         _animator.SetBool(IsRunningRightTurn, false);
         _animator.SetBool(IsRunningLeftTurn, false);
-        _animator.SetBool(IsPickup, false);
+        _animator.SetBool(IsTakeItem, false);
         
     }
 }

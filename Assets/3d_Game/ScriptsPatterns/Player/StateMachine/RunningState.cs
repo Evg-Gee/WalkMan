@@ -67,7 +67,7 @@ public class RunningState : BaseState
 
         if (Character.InputHandler.AttackPressed)
             TryChangeState<AttackState>();
-        if (Character.InputHandler.PickUp)
+        if (Character.InputHandler.PickUpPressed)
         TryChangeState<PickUpItemState>();
     }
 }
