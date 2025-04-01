@@ -82,6 +82,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""c595b20f-e7db-4926-a399-a00166aea43c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -337,6 +346,17 @@ namespace Player
                     ""action"": ""MeleeStunAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c3b5039-c1f8-424a-83bb-e24f602e61c5"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -351,6 +371,7 @@ namespace Player
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
             m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
             m_Player_MeleeStunAttack = m_Player.FindAction("MeleeStunAttack", throwIfNotFound: true);
+            m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         }
 
         ~@Player3dControls()
@@ -423,6 +444,7 @@ namespace Player
         private readonly InputAction m_Player_Fire;
         private readonly InputAction m_Player_MeleeAttack;
         private readonly InputAction m_Player_MeleeStunAttack;
+        private readonly InputAction m_Player_PickUp;
         public struct PlayerActions
         {
             private @Player3dControls m_Wrapper;
@@ -433,6 +455,7 @@ namespace Player
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
             public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
             public InputAction @MeleeStunAttack => m_Wrapper.m_Player_MeleeStunAttack;
+            public InputAction @PickUp => m_Wrapper.m_Player_PickUp;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -460,6 +483,9 @@ namespace Player
                 @MeleeStunAttack.started += instance.OnMeleeStunAttack;
                 @MeleeStunAttack.performed += instance.OnMeleeStunAttack;
                 @MeleeStunAttack.canceled += instance.OnMeleeStunAttack;
+                @PickUp.started += instance.OnPickUp;
+                @PickUp.performed += instance.OnPickUp;
+                @PickUp.canceled += instance.OnPickUp;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -482,6 +508,9 @@ namespace Player
                 @MeleeStunAttack.started -= instance.OnMeleeStunAttack;
                 @MeleeStunAttack.performed -= instance.OnMeleeStunAttack;
                 @MeleeStunAttack.canceled -= instance.OnMeleeStunAttack;
+                @PickUp.started -= instance.OnPickUp;
+                @PickUp.performed -= instance.OnPickUp;
+                @PickUp.canceled -= instance.OnPickUp;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -507,6 +536,7 @@ namespace Player
             void OnFire(InputAction.CallbackContext context);
             void OnMeleeAttack(InputAction.CallbackContext context);
             void OnMeleeStunAttack(InputAction.CallbackContext context);
+            void OnPickUp(InputAction.CallbackContext context);
         }
     }
 }

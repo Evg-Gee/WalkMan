@@ -17,4 +17,15 @@ public class StateMachine
         CurrentState = newState;
         CurrentState.Enter();
     }
+    public void ChangeState(IState newState)
+    {
+        CurrentState?.Exit();
+        CurrentState = newState;
+        CurrentState.Enter();
+    }
+     public void Update()
+    {
+        CurrentState?.HandleInput();
+        CurrentState?.Update();
+    }
 }

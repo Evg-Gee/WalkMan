@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class JumpingState : BaseState
 {
+    private readonly IAnimationController _animationController;
     private readonly float _jumpForce;
     private bool _hasJumped;
 
-    public JumpingState(ICharacter character, StateMachine stateMachine) 
-        : base(character, stateMachine) => _jumpForce = character.Stats.jumpForce;
+    public JumpingState(ICharacter character, StateMachine stateMachine, 
+        IAnimationController animationController) 
+        : base(character, stateMachine) 
+        {
+            _animationController = animationController;
+            _jumpForce = character.Stats.jumpForce;
+        }
 
     public override void Enter()
     {
-        Character.Animator.SetBool("IsJumping", true);
+        _animationController.SetState(AnimationState.Jumping);
         _hasJumped = false;
     }
 
-    public override void Exit() => Character.Animator.SetBool("IsJumping", false);
+    public override void Exit() => _animationController.SetState(AnimationState.Idle);
 
     public override void PhysicsUpdate()
     {
@@ -22,6 +28,7 @@ public class JumpingState : BaseState
         {
             Character.Rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             _hasJumped = true;
+            Debug.Log("Jump");
         }
     }
 

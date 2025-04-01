@@ -1,6 +1,12 @@
+using System;
+using UnityEngine;
+
 public interface IAnimationController
 {
-    void SetRunning(bool isRunning);
-    void SetTurn(float turnDirection);
+    public event Action <AnimationState> OnAnimationComplete;
+
+    void SetState(AnimationState state);
+    void SetTurn(IRotationHandler rotationHandler, Vector2 moveInput);
     void ResetTurns();
+   
 }

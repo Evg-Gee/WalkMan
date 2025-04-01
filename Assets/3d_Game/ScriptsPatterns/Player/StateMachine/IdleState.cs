@@ -42,5 +42,9 @@ public class IdleState : BaseState
         
         if (Character.InputHandler.AttackPressed)
             TryChangeState<AttackState>();
+        if (Character.InputHandler.PickUp)
+            TryChangeState<PickUpItemState>();
+            
+            
     }
 }

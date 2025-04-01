@@ -27,7 +27,7 @@ MonoBehaviour:
   meleeCheckRadius: 2.64
   _rotationSpeed: 0.85
   _accelerationSpeed: 8
-  _decelerationSpeed: 30
+  _decelerationSpeed: 1
   _turnAngleThreshold: 10
   wispPrefab: {fileID: 3356291870768024730, guid: de282cc29e88944469167f937163ba81, type: 3}
   EnemyLayer:
