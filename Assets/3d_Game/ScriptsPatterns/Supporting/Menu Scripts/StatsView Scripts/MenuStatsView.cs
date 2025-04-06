@@ -12,13 +12,8 @@ public class MenuStatsView : MonoBehaviour
 
     void Start()
     {
-        ResetUIInfo();
+        
     }
 
-    private void ResetUIInfo()
-    {
-        _scoreBloodHeartText.text = UserScoreInfo.instance.GetBloodHeartInt().ToString();
-        _scoreSilverHeartText.text = UserScoreInfo.instance.GetSilverHeartInt().ToString();
-        _scoreGoldHeartText.text = UserScoreInfo.instance.GetGoldHeartInt().ToString();
-    }
+   
 }

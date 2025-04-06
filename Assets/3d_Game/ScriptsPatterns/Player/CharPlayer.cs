@@ -2,14 +2,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-public class CharPlayer : MonoBehaviour, ICharacter
+public class CharPlayer : MonoBehaviour, ICharacter, IHealth
 {
+    [SerializeField] private PlayerCurrentStats playerCurrentStats;
     [SerializeField] private PlayerStatsSO _stats;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _groundCheckDistance = 0.2f;
     [SerializeField] private FloatingJoysticks _movementJoystick;
     [SerializeField] private FloatingJoysticks _lookJoystick;
     [SerializeField] private Button _handButton;
+   
+    public int maxHealth { get; private set; }
+    private int currentHealth;
+
+    public int Current => currentHealth;
+    public int Max => maxHealth;
+    public PlayerStatsPresenter Presenter { get; private set; }
     
     private IJoystick _moveInput;
     private IJoystick _lookInput;
@@ -33,6 +41,7 @@ public class CharPlayer : MonoBehaviour, ICharacter
     public StateMachine StateMachine => _stateMachine;
     public IAnimationController AnimController => _animController;
 
+    
     private void Awake()
     {
         Animator = GetComponent<Animator>();
@@ -60,9 +69,26 @@ public class CharPlayer : MonoBehaviour, ICharacter
         _stateMachine.AddState(new JumpingState(this, _stateMachine, _animController));
         _stateMachine.AddState(new AttackState(this, _stateMachine));
         _stateMachine.AddState(new TakeDamageState(this, _stateMachine, _animController));             
-       // _stateMachine.AddState(new PickUpItemState(this, _stateMachine, null, _animController));
         
         _stateMachine.ChangeState<IdleState>();
+    }
+
+    void Start()
+    {
+        if (playerCurrentStats != null)
+        {
+            // Загрузка данных о здоровье из сохранений или из ScriptableObject
+            maxHealth = _stats.maxHealth;
+            currentHealth = playerCurrentStats.statsData.currentHealth;
+        }
+
+        // Загрузим данные из UserScoreInfo, если они есть
+        var userScoreInfo = FindObjectOfType<UserScoreInfo>();
+        if (userScoreInfo != null)
+        {
+            currentHealth = userScoreInfo.playerStatsData.currentHealth;
+            maxHealth = _stats.maxHealth;
+        }
     }
 
     private void Update()
@@ -89,5 +115,13 @@ public class CharPlayer : MonoBehaviour, ICharacter
             _groundCheckDistance, 
             _groundLayer
         );
-    }    
+    }
+    public void InjectPresenter(PlayerStatsPresenter presenter)
+    {
+        Presenter = presenter;
+    }
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
 }

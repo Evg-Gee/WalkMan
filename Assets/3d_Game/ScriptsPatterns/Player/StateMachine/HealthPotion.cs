@@ -6,7 +6,16 @@ public class HealthPotion : MonoBehaviour, IInteractable
 
     public void Interact(ICharacter character)
     {
-        Debug.Log("charactermaxHealth + " + character.Stats.maxHealth);
-        Destroy(gameObject,0.75f);
+        if (character is CharPlayer player)
+        {
+            player.Heal(healAmount);
+            player.Presenter?.Heal(healAmount);  // Обновление UI
+
+            // Сохраняем данные после изменения здоровья
+            var userScoreInfo = FindObjectOfType<UserScoreInfo>();
+            userScoreInfo.SaveUserData(); // сохраняем данные о здоровье
+        }
+
+        Destroy(gameObject, 0.75f);
     }
 }

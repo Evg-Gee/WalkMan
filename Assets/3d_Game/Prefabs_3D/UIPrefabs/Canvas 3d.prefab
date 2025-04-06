@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 8121737551503614029}
   - component: {fileID: 5642498891988519708}
   m_Layer: 5
-  m_Name: Monsters_Kill_Image (1)
+  m_Name: Monsters_Kill_Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1120,20 +1120,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7114083529257344708}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9d85d7b2a17e914089edac482f258f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpSlider: {fileID: 263489142664557911}
-  _heartBlooodImage: {fileID: 8938960957333105430}
-  _monstersKillImage: {fileID: 3065530709466534789}
-  _monstersKillImage2: {fileID: 5642498891988519708}
-  _scoreBloodHeartText: {fileID: 174522058452858974}
-  _scoreMonstersKillText: {fileID: 3535068656256616731}
-  _durationTime: 0.13
-  _heartFX: {fileID: 7386587803812691767}
-  _monstersKillFX: {fileID: 8405128339220301587}
+  healthBar: {fileID: 263489142664557911}
+  heartIcon: {fileID: 8938960957333105430}
+  monsterKillIcon1: {fileID: 3065530709466534789}
+  monsterKillIcon2: {fileID: 3065530709466534789}
+  heartText: {fileID: 174522058452858974}
+  monsterKillText: {fileID: 3535068656256616731}
+  animationDuration: 0.5
+  heartEffect: {fileID: 7386587803812691767}
+  monsterKillEffect: {fileID: 8405128339220301587}
 --- !u!223 &3861766249730166795
 Canvas:
   m_ObjectHideFlags: 0
